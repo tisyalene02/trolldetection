@@ -4,8 +4,8 @@ import joblib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
-from collections import Counter  
-
+from collections import Counter
+import sklearn
 
 def data_page():
    # App title
