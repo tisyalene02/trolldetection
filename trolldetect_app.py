@@ -12,7 +12,7 @@ def data_page():
     st.title("Data of Youtube Comments During the Malaysian Election")
     # Load dataset
     try:
-        data = pd.read_csv("data\yt_data.csv")  # Replace with your dataset's filename
+        data = pd.read_csv("yt_data.csv")  # Replace with your dataset's filename
         st.write("### Dataset Preview")
         st.dataframe(data.head())  # Show first few rows
 
