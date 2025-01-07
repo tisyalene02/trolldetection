@@ -49,8 +49,8 @@ def data_page():
 
 def detection_page():
 
-    # Load the SVM model and TF-IDF vectorizer using Joblib
-    svm_model = joblib.load("svm_troll_detection_model.joblib")
+    # Load the Logistic Regression model and TF-IDF vectorizer using Joblib
+    logreg_model = joblib.load("logreg_troll_detection_model.joblib")
     tfidf = joblib.load("tfidf_vectorizer.joblib")
 
     # App title
@@ -68,8 +68,8 @@ def detection_page():
             input_vector = tfidf.transform([processed_input])
 
             # Predict with SVM model
-            prediction = svm_model.predict(input_vector)[0]
-            probabilities = svm_model.predict_proba(input_vector)[0]
+            prediction = logreg_model.predict(input_vector)[0]
+            probabilities = logreg_model.predict_proba(input_vector)[0]
 
             # Display result
             if prediction == 1:
