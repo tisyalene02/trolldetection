@@ -47,37 +47,6 @@ def data_page():
     st.pyplot(plt)
 
 
-    st.write("### Top Words in Comments")
-
-    wc_filter = st.selectbox("Generate Top Words for", ["Overall Comments", "Troll Comments", "Non-Troll Comments"])
-
-    if wc_filter == "Troll Comments":
-        troll_words = " ".join(data[data['Status'] == 1]['Comment'].dropna()).split()
-        if not troll_words:
-            st.write("No troll comments available to analyze.")
-        else:
-            troll_word_counts = Counter(troll_words).most_common(10)
-            st.write("#### Top 10 Words in Troll Comments")
-            st.write(pd.DataFrame(troll_word_counts, columns=['Word', 'Count']))
-    elif wc_filter == "Non-Troll Comments":
-        non_troll_words = " ".join(data[data['Status'] == 0]['Comment'].dropna()).split()
-        if not non_troll_words:
-            st.write("No non-troll comments available to analyze.")
-        else:
-            non_troll_word_counts = Counter(non_troll_words).most_common(10)
-            st.write("#### Top 10 Words in Non-Troll Comments")
-            st.write(pd.DataFrame(non_troll_word_counts, columns=['Word', 'Count']))
-    else:
-        overall_words = " ".join(data['Comment'].dropna()).split()
-        if not overall_words:
-            st.write("No comments available to analyze.")
-        else:
-            overall_word_counts = Counter(overall_words).most_common(10)
-            st.write("#### Top 10 Words in Overall Comments")
-            st.write(pd.DataFrame(overall_word_counts, columns=['Word', 'Count']))
-
- 
-
 def detection_page():
 
     # Load the SVM model and TF-IDF vectorizer using Joblib
